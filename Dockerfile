@@ -1,4 +1,3 @@
-#Trigger comment
 FROM openjdk:8u151-jdk-alpine
 
 RUN apk add --no-cache --repository  http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git rpm nodejs python make g++
