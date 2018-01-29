@@ -1,6 +1,5 @@
 FROM openjdk:8u151-jdk-alpine
-R
-UN apk add --no-cache --repository  http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git rpm nodejs python make g++
+RUN apk add --no-cache --repository  http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git rpm nodejs python make g++
 
 RUN git config --global user.email "rentpath-rprel@rentpath.com"
 RUN git config --global user.name "rentpath-rprel"
