@@ -13,6 +13,10 @@ RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/lein
 RUN lein
 
 ONBUILD COPY . /root
+
+ONBUILD ARG BUILD_NUMBER
+ONBUILD ENV BUILD_NUMBER=$BUILD_NUMBER
+
 ONBUILD RUN script/bootstrap
 ONBUILD RUN script/test
 ONBUILD RUN script/build
