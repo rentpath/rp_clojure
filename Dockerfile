@@ -24,7 +24,6 @@ RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/lein
 
 RUN lein
 
-RUN echo "options ndots:3" >> /etc/resolv.conf
 ONBUILD COPY . /root
 
 ONBUILD ARG BUILD_ORG_REPO
@@ -41,5 +40,6 @@ ONBUILD ENV BUILD_NUMBER=$BUILD_NUMBER \
   BUILD_TARGET_URL=$BUILD_TARGET_URL \
   BUILD_AUTH=$BUILD_AUTH
 
-ONBUILD RUN make -j -O build
-ONBUILD RUN make -j -O release
+ONBUILD RUN echo "options ndots:3" >> /etc/resolv.conf \
+  && make -j -O build \
+  && make -j -O release
