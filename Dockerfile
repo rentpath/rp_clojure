@@ -24,6 +24,7 @@ RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/lein
 
 RUN lein
 
+RUN echo "options ndots:3" >> /etc/resolv.conf
 ONBUILD COPY . /root
 
 ONBUILD ARG BUILD_ORG_REPO
