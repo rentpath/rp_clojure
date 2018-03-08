@@ -1,6 +1,6 @@
 FROM openjdk:8u151-jdk-alpine
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git make
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git make jq
 
 ## gh-status-reporter to report commit statuses
 RUN wget -O /bin/gh-status-reporter https://github.com/Christopher-Bui/gh-status-reporter/releases/download/v0.2.0/linux_amd64_gh-status-reporter \
