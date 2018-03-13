@@ -1,6 +1,6 @@
 FROM openjdk:8u151-jdk-alpine
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git make jq nodejs
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git make jq nodejs python g++
 
 # npm is used for dredd
 RUN npm install
