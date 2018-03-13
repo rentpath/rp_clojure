@@ -44,5 +44,5 @@ ONBUILD ENV BUILD_NUMBER=$BUILD_NUMBER \
   BUILD_AUTH=$BUILD_AUTH
 
 ONBUILD RUN echo "options ndots:3" >> /etc/resolv.conf \
-  && make -j -O build \
-  && make -j -O release
+  && make -f makefile.docker -j -O build \
+  && make -f makefile.docker -j -O release
