@@ -1,14 +1,14 @@
-FROM openjdk:8u151-jdk-alpine
+FROM openjdk:10.0.1-jdk-slim
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git make jq nodejs python g++
+RUN apt-get update
+RUN apt-get install -y bash curl git make jq nodejs npm python g++ wget
+RUN apt-get clean
 
-# npm is used for dredd
-RUN npm install
+## dredd needed for listing svc
+RUN npm install -g dredd
 
 ## gh-status-reporter to report commit statuses
 RUN wget -O /bin/gh-status-reporter https://github.com/Christopher-Bui/gh-status-reporter/releases/download/v0.2.0/linux_amd64_gh-status-reporter \
-  # This is needed since gh-status-reporter was built without musl
-  && mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 \
   && chmod +x /bin/gh-status-reporter
 
 ## github-release tool
