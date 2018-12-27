@@ -24,6 +24,7 @@ RUN mkdir -p /root/bin
 WORKDIR /root
 ENV PATH="/root/bin:${PATH}"
 RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && chmod u+x /root/bin/lein
+RUN mkdir /tmp/profiler && cd /tmp/profiler && curl -LJO https://www.yourkit.com/download/YourKit-JavaProfiler-2018.04-b87.zip && unzip YourKit-JavaProfiler-2018.04-b87.zip && mv YourKit-JavaProfiler-2018.04 /usr/local/share/yourkit-profiler
 
 RUN lein
 
