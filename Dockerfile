@@ -1,5 +1,8 @@
 FROM openjdk:8u151-jdk-alpine
 
+ARG yourkit_version=2019.1
+ARG yourkit_patchlevel=117
+
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git make jq nodejs python g++
 
 # npm is used for dredd
@@ -24,7 +27,7 @@ RUN mkdir -p /root/bin
 WORKDIR /root
 ENV PATH="/root/bin:${PATH}"
 RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && chmod u+x /root/bin/lein
-RUN mkdir /tmp/profiler && cd /tmp/profiler && curl -LJO https://www.yourkit.com/download/YourKit-JavaProfiler-2018.04-b87.zip && unzip YourKit-JavaProfiler-2018.04-b87.zip && mv YourKit-JavaProfiler-2018.04 /usr/local/share/yourkit-profiler
+RUN mkdir /tmp/profiler && cd /tmp/profiler && curl -LJO https://www.yourkit.com/download/YourKit-JavaProfiler-${yourkit_version}-b${yourkit_patchlevel}.zip && unzip YourKit-JavaProfiler-${yourkit_version}-b${yourkit_patchlevel}.zip && mv YourKit-JavaProfiler-${yourkit_version} /usr/local/share/yourkit-profiler
 
 RUN lein
 
