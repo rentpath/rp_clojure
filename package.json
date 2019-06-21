@@ -8,9 +8,7 @@
     "test": "test"
   },
   "dependencies": {},
-  "devDependencies": {
-    "dredd": "1.1.0-pre.7"
-  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

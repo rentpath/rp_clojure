@@ -4,9 +4,6 @@ RUN apt-get update
 RUN apt-get install -y bash curl git make jq nodejs npm python g++ wget
 RUN apt-get clean
 
-## dredd needed for listing svc
-RUN npm install -g dredd
-
 ## gh-status-reporter to report commit statuses
 RUN wget -O /bin/gh-status-reporter https://github.com/Christopher-Bui/gh-status-reporter/releases/download/v0.2.0/linux_amd64_gh-status-reporter \
   && chmod +x /bin/gh-status-reporter
