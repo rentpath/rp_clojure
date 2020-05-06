@@ -4,12 +4,12 @@ ARG yourkit_version=2019.8
 ARG yourkit_patchlevel=138
 
 RUN apt-get update
-RUN apt-get install -y git make python g++ lsb-release iptables apt-transport-https ca-certificates
+RUN apt-get install -y git make python g++ lsb-release apt-transport-https ca-certificates
 RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
 RUN echo "deb https://deb.nodesource.com/node_8.x $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/nodesource.list
 RUN echo "deb-src https://deb.nodesource.com/node_8.x $(lsb_release -sc) main" | tee -a /etc/apt/sources.list.d/nodesource.list
 RUN apt-get update
-RUN apt-get install -y nodejs jq mongodb-clients
+RUN apt-get install -y nodejs jq
 
 # npm is used for dredd
 RUN npm install
