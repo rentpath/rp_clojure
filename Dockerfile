@@ -1,9 +1,15 @@
-FROM openjdk:8u151-jdk-alpine
+FROM openjdk:8u151-jdk
 
-ARG yourkit_version=2019.1
-ARG yourkit_patchlevel=117
+ARG yourkit_version=2019.8
+ARG yourkit_patchlevel=138
 
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community bash curl git make jq nodejs python g++
+RUN apt-get update
+RUN apt-get install -y git make python g++ lsb-release iptables apt-transport-https ca-certificates
+RUN curl -sSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+RUN echo "deb https://deb.nodesource.com/node_8.x $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/nodesource.list
+RUN echo "deb-src https://deb.nodesource.com/node_8.x $(lsb_release -sc) main" | tee -a /etc/apt/sources.list.d/nodesource.list
+RUN apt-get update
+RUN apt-get install -y nodejs jq
 
 # npm is used for dredd
 RUN npm install
@@ -11,7 +17,6 @@ RUN npm install
 ## gh-status-reporter to report commit statuses
 RUN wget -O /bin/gh-status-reporter https://github.com/Christopher-Bui/gh-status-reporter/releases/download/v0.2.0/linux_amd64_gh-status-reporter \
   # This is needed since gh-status-reporter was built without musl
-  && mkdir /lib64 && ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2 \
   && chmod +x /bin/gh-status-reporter
 
 ## github-release tool
