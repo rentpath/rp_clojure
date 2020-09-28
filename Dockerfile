@@ -1,7 +1,7 @@
 FROM openjdk:8u151-jdk
 
-ARG yourkit_version=2019.8
-ARG yourkit_patchlevel=138
+ARG yourkit_version=2020.9
+ARG yourkit_patchlevel=408
 
 RUN apt-get update
 RUN apt-get install -y git make python g++ lsb-release apt-transport-https ca-certificates
@@ -33,6 +33,7 @@ WORKDIR /root
 ENV PATH="/root/bin:${PATH}"
 RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && chmod u+x /root/bin/lein
 RUN mkdir /tmp/profiler && cd /tmp/profiler && curl -LJO https://www.yourkit.com/download/YourKit-JavaProfiler-${yourkit_version}-b${yourkit_patchlevel}.zip && unzip YourKit-JavaProfiler-${yourkit_version}-b${yourkit_patchlevel}.zip && mv YourKit-JavaProfiler-${yourkit_version} /usr/local/share/yourkit-profiler
+RUN sed -i 's/java\.util\.logging\.ConsoleHandler\.level.*/java.util.logging.ConsoleHandler.level = WARN/g' /usr/local/share/yourkit-profiler/jre64/conf/logging.properties
 
 RUN lein
 
