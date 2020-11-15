@@ -10,7 +10,7 @@ RUN curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh \
 
 ## youkit profiler
 ARG yourkit_version=2020.9
-ARG yourkit_patchlevel=408
+ARG yourkit_patchlevel=411
 RUN mkdir /tmp/profiler && cd /tmp/profiler && curl -LJO https://www.yourkit.com/download/YourKit-JavaProfiler-${yourkit_version}-b${yourkit_patchlevel}.zip && unzip YourKit-JavaProfiler-${yourkit_version}-b${yourkit_patchlevel}.zip && mv YourKit-JavaProfiler-${yourkit_version} /usr/local/share/yourkit-profiler
 RUN sed -i 's/java\.util\.logging\.ConsoleHandler\.level.*/java.util.logging.ConsoleHandler.level = WARN/g' /usr/local/share/yourkit-profiler/jre64/conf/logging.properties
 
