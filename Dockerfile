@@ -30,9 +30,6 @@ RUN git config --global user.name "rentpath-rprel"
 RUN mkdir -p /root/bin
 WORKDIR /root
 ENV PATH="/root/bin:${PATH}"
-RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && chmod u+x /root/bin/lein
-
-RUN lein
 
 ONBUILD COPY . /root
 
@@ -50,6 +47,4 @@ ONBUILD ENV BUILD_NUMBER=$BUILD_NUMBER \
   BUILD_TARGET_URL=$BUILD_TARGET_URL \
   BUILD_AUTH=$BUILD_AUTH
 
-ONBUILD RUN echo "options ndots:3" >> /etc/resolv.conf \
-  && make -f makefile.docker build \
-  && make -f makefile.docker release
+ONBUILD RUN echo "options ndots:3" >> /etc/resolv.conf
