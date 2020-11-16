@@ -18,8 +18,10 @@ RUN mkdir /build
 WORKDIR /root
 ENV PATH="/root/bin:${PATH}"
 RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && chmod u+x /root/bin/lein
-COPY ./lein-build-to-nexus /root/bin/lein-build-to-nexus
-RUN chmod u+x /root/bin/lein-build-to-nexus
+COPY ./lein-build /root/bin/lein-build
+COPY ./lein-release /root/bin/lein-release
+RUN chmod u+x /root/bin/lein-build
+RUN chmod u+x /root/bin/lein-release
 
 RUN echo "options ndots:3" >> /etc/resolv.conf
 
