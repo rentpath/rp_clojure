@@ -1,4 +1,4 @@
-FROM adoptopenjdk:8u252-b09-jre-openj9-0.20.0-bionic
+FROM adoptopenjdk:8u252-b09-jdk-openj9-0.20.0-bionic
 
 RUN apt-get update
 RUN apt-get install -y bash curl git make jq wget unzip
@@ -30,6 +30,8 @@ RUN git config --global user.name "rentpath-rprel"
 RUN mkdir -p /root/bin
 WORKDIR /root
 ENV PATH="/root/bin:${PATH}"
+
+RUN cp /opt/java/openjdk/lib/tools.jar /opt/java/openjdk/jre/lib/tools.jar
 
 ONBUILD COPY . /root
 
