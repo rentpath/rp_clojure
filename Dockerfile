@@ -24,6 +24,12 @@ RUN wget -O /root/linux-amd64-github-release.tar.bz2 https://github.com/aktau/gi
   && mv /root/bin/linux/amd64/github-release /bin/github-release \
   && chmod +x /bin/github-release
 
+## envconsul
+RUN wget -O /root/envconsul.tar.gz https://releases.hashicorp.com/envconsul/0.11.0/envconsul_0.11.0_linux_amd64.tgz \
+  && tar -xvzf /root/envconsul.tar.gz \
+  && mv ./envconsul /usr/local/bin/envconsul \
+  && chmod +x /usr/local/bin/envconsul
+
 RUN git config --global user.email "rentpath-rprel@rentpath.com"
 RUN git config --global user.name "rentpath-rprel"
 
