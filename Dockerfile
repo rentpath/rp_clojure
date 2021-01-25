@@ -1,7 +1,7 @@
 FROM adoptopenjdk:8u252-b09-jdk-openj9-0.20.0-bionic
 
 RUN apt-get update
-RUN apt-get install -y bash curl git make jq wget unzip
+RUN apt-get install -y bash curl git make jq wget unzip nodejs
 RUN apt-get clean
 
 ## clojure CLI
@@ -29,6 +29,9 @@ RUN wget -O /root/envconsul.tar.gz https://releases.hashicorp.com/envconsul/0.11
   && tar -xvzf /root/envconsul.tar.gz \
   && mv ./envconsul /usr/local/bin/envconsul \
   && chmod +x /usr/local/bin/envconsul
+
+## yarn
+RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 
 RUN git config --global user.email "rentpath-rprel@rentpath.com"
 RUN git config --global user.name "rentpath-rprel"
