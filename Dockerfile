@@ -1,4 +1,4 @@
-FROM adoptopenjdk:8u252-b09-jdk-openj9-0.20.0-bionic
+FROM adoptopenjdk/openjdk8:jdk8u275-b01-slim
 
 RUN apt-get update
 RUN apt-get install -y bash curl git make jq wget unzip nodejs
@@ -63,5 +63,4 @@ ONBUILD ENV BUILD_NUMBER=$BUILD_NUMBER \
   BUILD_AUTH=$BUILD_AUTH \
   VERSION=$VERSION
 
-ONBUILD RUN echo "version: ${VERSION}\nbuild_number: ${BUILD_NUMBER}\ngit_commit: ${BUILD_SHA}" > resources/BUILD-INFO \
-  && echo "options ndots:3" >> /etc/resolv.conf
+ONBUILD RUN echo "version: ${VERSION}\nbuild_number: ${BUILD_NUMBER}\ngit_commit: ${BUILD_SHA}" > resources/BUILD-INFO
