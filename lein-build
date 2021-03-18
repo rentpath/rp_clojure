@@ -5,4 +5,4 @@ set -eu
 E_BAD_ARGS=66
 
 lein test :all
-lein deploy
+lein deploy github

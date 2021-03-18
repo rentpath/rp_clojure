@@ -10,7 +10,7 @@ lein change version leiningen.release/bump-version release
 lein vcs commit
 lein vcs tag --no-sign --annotate
 lein install
-lein deploy
+lein deploy github
 lein change version leiningen.release/bump-version
 lein vcs commit
 
