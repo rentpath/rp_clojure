@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -eu
+
+E_BAD_ARGS=66
+
+mvn deploy
