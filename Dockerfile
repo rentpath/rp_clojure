@@ -11,6 +11,11 @@ COPY ./mvn-build /root/bin/mvn-build
 COPY ./mvn-release /root/bin/mvn-release
 RUN chmod u+x /root/bin/mvn-build
 RUN chmod u+x /root/bin/mvn-release
+RUN mkdir /root/.m2
+RUN chmod 755 /root/.m2
+COPY ./settings.xml /root/.m2
+RUN git config --global user.email "rentpath-rprel@rentpath.com"
+RUN git config --global user.name "rentpath-rprel"
 ENV PATH="/root/bin:/root/apache-maven-3.6.3/bin:${PATH}"
 
 ONBUILD COPY . /root
@@ -32,3 +37,4 @@ ONBUILD ENV BUILD_NUMBER=$BUILD_NUMBER \
   VERSION=$VERSION
 
 ONBUILD RUN echo "version: ${VERSION}\nbuild_number: ${BUILD_NUMBER}\ngit_commit: ${BUILD_SHA}" > resources/BUILD-INFO
+WORKDIR /build

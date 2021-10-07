@@ -4,4 +4,5 @@ set -eu
 
 E_BAD_ARGS=66
 
-mvn deploy
+mvn --batch-mode clean
+mvn --batch-mode deploy

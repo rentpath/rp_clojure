@@ -4,5 +4,7 @@ set -eu
 
 E_BAD_ARGS=66
 
-mvn release:prepare
-mvn release:perform
+mvn --batch-mode clean
+mvn --batch-mode release:prepare
+mvn --batch-mode release:perform
+mvn --batch-mode help:evaluate -Dexpression=project.version -q -DforceStdout > .version
