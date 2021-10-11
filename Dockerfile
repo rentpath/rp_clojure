@@ -17,6 +17,7 @@ RUN mkdir /build
 ## Badigeon
 WORKDIR /root
 ENV PATH="/root/bin:${PATH}"
+COPY ./settings.xml /root/.m2
 COPY ./badigeon-build /root/bin/badigeon-build
 COPY ./badigeon-release /root/bin/badigeon-release
 RUN chmod u+x /root/bin/badigeon-build
