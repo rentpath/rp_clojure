@@ -27,8 +27,8 @@ RUN cp /opt/java/openjdk/lib/tools.jar /opt/java/openjdk/jre/lib/tools.jar
 RUN echo "options ndots:3" >> /etc/resolv.conf
 
 # The below env vars are expected to be supplied by the builder
-# ENV NEXUS_USERNAME
-# ENV NEXUS_PASSWORD
+ENV NEXUS_USERNAME
+ENV NEXUS_PASSWORD
 # ENV IS_MASTER
 
 WORKDIR /build
