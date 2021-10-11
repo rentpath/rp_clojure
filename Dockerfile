@@ -1,12 +1,12 @@
-FROM adoptopenjdk:8u252-b09-jre-openj9-0.20.0-bionic
+FROM adoptopenjdk/openjdk8:jdk8u275-b01-slim
 
 RUN apt-get update
-RUN apt-get install -y bash curl git make jq wget unzip
+RUN apt-get install -y bash curl git make jq wget unzip nodejs
 RUN apt-get clean
 
 ## clojure CLI
-RUN curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh \
-&& chmod +x linux-install-1.10.1.536.sh && ./linux-install-1.10.1.536.sh
+RUN curl -O https://download.clojure.org/install/linux-install-1.10.3.986.sh \
+&& chmod +x linux-install-1.10.3.986.sh && ./linux-install-1.10.3.986.sh
 
 RUN git config --global user.email "rentpath-rprel@rentpath.com"
 RUN git config --global user.name "rentpath-rprel"
@@ -14,18 +14,17 @@ RUN git config --global user.name "rentpath-rprel"
 RUN mkdir -p /root/bin
 RUN mkdir /build
 
-## leiningen
+## Badigeon
 WORKDIR /root
 ENV PATH="/root/bin:${PATH}"
-RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein && chmod u+x /root/bin/lein
-COPY ./lein-build /root/bin/lein-build
-COPY ./lein-release /root/bin/lein-release
-RUN chmod u+x /root/bin/lein-build
-RUN chmod u+x /root/bin/lein-release
+COPY ./badigeon-build /root/bin/badigeon-build
+COPY ./badigeon-release /root/bin/badigeon-release
+RUN chmod u+x /root/bin/badigeon-build
+RUN chmod u+x /root/bin/badigeon-release
+
+RUN cp /opt/java/openjdk/lib/tools.jar /opt/java/openjdk/jre/lib/tools.jar
 
 RUN echo "options ndots:3" >> /etc/resolv.conf
-
-RUN lein
 
 # The below env vars are expected to be supplied by the builder
 # ENV NEXUS_USERNAME

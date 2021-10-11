@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-set -eu
-
-E_BAD_ARGS=66
-
-lein test :all
-lein deploy

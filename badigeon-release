@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+set -eu
+
+E_BAD_ARGS=66
+
+cp VERSION .version
+RUN clojure -A:test -m kaocha.runner
+RUN clojure -M:build :release
+git add VERSION
+git commit -m "Incrementing version to $(cat VERSION)"

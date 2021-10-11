@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -eu
+
+E_BAD_ARGS=66
+
+RUN clojure -A:test -m kaocha.runner
+RUN clojure -M:build
