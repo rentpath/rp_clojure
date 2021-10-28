@@ -1,12 +1,12 @@
-FROM adoptopenjdk:8u252-b09-jre-openj9-0.20.0-bionic
+FROM adoptopenjdk:8u292-b10-jre-openj9-0.26.0-focal
 
 RUN apt-get update
 RUN apt-get install -y bash curl git make jq wget unzip
 RUN apt-get clean
 
 ## clojure CLI
-RUN curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh \
-&& chmod +x linux-install-1.10.1.536.sh && ./linux-install-1.10.1.536.sh
+RUN curl -O https://download.clojure.org/install/linux-install-1.10.3.998.sh \
+&& chmod +x linux-install-1.10.3.998.sh && ./linux-install-1.10.3.998.sh
 
 RUN git config --global user.email "rentpath-rprel@rentpath.com"
 RUN git config --global user.name "rentpath-rprel"
