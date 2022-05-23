@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -eu
+
+E_BAD_ARGS=66
+
+clojure -T:build ci :release? true
+clojure -T:build deploy :release? true
+git add VERSION
+git commit -m 'Bumping Version [skip ci]'
