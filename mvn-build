@@ -4,5 +4,5 @@ set -eu
 
 E_BAD_ARGS=66
 
-mvn --batch-mode clean
-mvn --batch-mode deploy
+mvn --batch-mode clean -Denforcer.skip=true
+mvn --batch-mode deploy -Denforcer.skip=true
