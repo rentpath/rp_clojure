@@ -1,12 +1,12 @@
-FROM adoptopenjdk:8u292-b10-jdk-openj9-0.26.0-focal
+FROM eclipse-temurin:8-jdk-focal
 
 RUN apt-get update
 RUN apt-get install -y bash curl git make jq wget unzip nodejs
 RUN apt-get clean
 
 ## clojure CLI
-RUN curl -O https://download.clojure.org/install/linux-install-1.10.3.998.sh \
-&& chmod +x linux-install-1.10.3.998.sh && ./linux-install-1.10.3.998.sh
+RUN curl -O https://download.clojure.org/install/linux-install-1.11.1.1155.sh \
+&& chmod +x linux-install-1.11.1.1155.sh && ./linux-install-1.11.1.1155.sh
 
 ## envconsul
 RUN wget -O /root/envconsul.zip https://releases.hashicorp.com/envconsul/0.12.1/envconsul_0.12.1_linux_amd64.zip \
