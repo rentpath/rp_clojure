@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk8:jdk8u282-b08-slim
+FROM eclipse-temurin:8-jdk-focal
 
 RUN apt-get update
 RUN apt-get install -y bash curl wget git
