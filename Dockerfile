@@ -14,6 +14,8 @@ RUN git config --global user.name "rentpath-rprel"
 RUN mkdir -p /root/bin
 RUN mkdir /build
 
+RUN git config --global --add safe.directory /build
+
 ## leiningen
 WORKDIR /root
 ENV PATH="/root/bin:${PATH}"
