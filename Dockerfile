@@ -24,8 +24,6 @@ COPY ./clj-release /root/bin/clj-release
 RUN chmod u+x /root/bin/clj-build
 RUN chmod u+x /root/bin/clj-release
 
-RUN echo "options ndots:3" >> /etc/resolv.conf
-
 # The below env vars are expected to be supplied by the builder
 # ENV NEXUS_USERNAME
 # ENV NEXUS_PASSWORD
