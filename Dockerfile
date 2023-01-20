@@ -18,8 +18,6 @@ RUN cd /root/bin && curl -LJO https://raw.githubusercontent.com/technomancy/lein
 
 RUN lein
 
-RUN cp /opt/java/openjdk/lib/tools.jar /opt/java/openjdk/jre/lib/tools.jar
-
 ONBUILD COPY . /root
 
 ONBUILD ARG BUILD_NUMBER
