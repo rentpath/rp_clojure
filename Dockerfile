@@ -9,7 +9,7 @@ RUN curl -O https://download.clojure.org/install/linux-install-1.11.1.1155.sh \
 && chmod +x linux-install-1.11.1.1155.sh && ./linux-install-1.11.1.1155.sh
 
 ## envconsul
-RUN wget -O /root/envconsul.zip https://releases.hashicorp.com/envconsul/0.12.1/envconsul_0.12.1_linux_amd64.zip \
+RUN wget -O /root/envconsul.zip https://releases.hashicorp.com/envconsul/0.13.1/envconsul_0.13.1_linux_amd64.zip \
   && unzip /root/envconsul.zip \
   && mv ./envconsul /usr/local/bin/envconsul \
   && chmod +x /usr/local/bin/envconsul
