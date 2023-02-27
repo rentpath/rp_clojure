@@ -38,5 +38,4 @@ ONBUILD ENV BUILD_NUMBER=$BUILD_NUMBER \
   BUILD_AUTH=$BUILD_AUTH \
   VERSION=$VERSION
 
-ONBUILD RUN echo "version: ${VERSION}\nbuild_number: ${BUILD_NUMBER}\ngit_commit: ${BUILD_SHA}" > resources/BUILD-INFO \
-  && echo "options ndots:3" >> /etc/resolv.conf
+ONBUILD RUN echo "version: ${VERSION}\nbuild_number: ${BUILD_NUMBER}\ngit_commit: ${BUILD_SHA}" > resources/BUILD-INFO
