@@ -6,12 +6,19 @@ E_BAD_ARGS=66
 
 lein test :all
 lein vcs assert-committed
+
+# Cut the release
 lein change version leiningen.release/bump-version release
 lein vcs commit
 lein vcs tag --no-sign --annotate
+
+# Deploy locally and to remote repository
 lein install
 lein deploy
+
+# Save release's version so actions can make github releases with version-based names
+echo "$(cat project.clj | grep defproject | cut -d' ' -f3 | sed 's/\"//g')" > .version
+
+# Create snapshot version on the HEAD
 lein change version leiningen.release/bump-version
 lein vcs commit
-
-echo "$(cat project.clj | grep defproject | cut -d' ' -f3 | sed 's/\"//g')" > .version
