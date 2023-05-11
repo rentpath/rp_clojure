@@ -1,4 +1,5 @@
 FROM eclipse-temurin:17-jre-focal
 
-# Security has identified a vulnerability in the previous version of the zlib1g library, necessitating an update thereto.
-RUN apt-get update && apt-get install --only-upgrade zlib1g
+# Update packages with known vulnerabilities
+RUN apt-get update
+RUN apt-get install -y --only-upgrade openssl zlib1g
