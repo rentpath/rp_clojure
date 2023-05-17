@@ -5,8 +5,9 @@ RUN apt-get install -y bash curl git openssl wget
 RUN apt-get clean
 
 WORKDIR /root
-RUN wget https://downloads.apache.org/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz
-RUN tar -xvzf apache-maven-3.9.2-bin.tar.gz
+ENV MAVEN_VERSION 3.9.2
+RUN wget https://downloads.apache.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz
+RUN tar -xvzf apache-maven-$MAVEN_VERSION-bin.tar.gz
 COPY ./mvn-build /root/bin/mvn-build
 COPY ./mvn-release /root/bin/mvn-release
 RUN chmod u+x /root/bin/mvn-build
@@ -16,7 +17,7 @@ RUN chmod 755 /root/.m2
 COPY ./settings.xml /root/.m2
 RUN git config --global user.email "rentpath-rprel@rentpath.com"
 RUN git config --global user.name "rentpath-rprel"
-ENV PATH="/root/bin:/root/apache-maven-3.9.2/bin:${PATH}"
+ENV PATH="/root/bin:/root/apache-maven-${MAVEN_VERSION}/bin:${PATH}"
 
 ONBUILD COPY . /root
 
