@@ -1,4 +1,4 @@
-FROM eclipse-temurin:8-jdk-focal
+FROM eclipse-temurin:17-jdk-focal
 
 RUN apt-get update
 RUN apt-get install -y bash curl git openssl wget
