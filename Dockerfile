@@ -4,6 +4,8 @@ RUN apt-get update
 RUN apt-get install -y bash curl git openssl wget
 RUN apt-get clean
 
+RUN git config --global --add safe.directory /build
+
 WORKDIR /root
 ENV MAVEN_VERSION 3.9.2
 RUN wget https://downloads.apache.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz
