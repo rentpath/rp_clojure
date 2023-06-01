@@ -1,7 +1,7 @@
 FROM amd64/eclipse-temurin:17-jdk-focal
 
 RUN apt-get update
-RUN apt-get install -y bash curl git jq make nodejs openssl unzip wget
+RUN apt-get install -y bash curl git make jq wget unzip nodejs
 RUN apt-get clean
 
 ## clojure CLI
