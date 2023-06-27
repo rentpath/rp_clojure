@@ -5,6 +5,7 @@ set -eu
 E_BAD_ARGS=66
 
 mvn --batch-mode clean
+mvn --batch-mode release:prepare -DdryRun
+mvn --batch-mode help:evaluate -f pom.xml.tag -Dexpression=project.version -q -DforceStdout > .version
 mvn --batch-mode release:prepare
 mvn --batch-mode release:perform
-mvn --batch-mode help:evaluate -Dexpression=project.version -q -DforceStdout > .version

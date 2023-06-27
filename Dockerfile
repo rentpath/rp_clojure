@@ -7,7 +7,7 @@ RUN apt-get clean
 RUN git config --global --add safe.directory /build
 
 WORKDIR /root
-ENV MAVEN_VERSION 3.9.2
+ENV MAVEN_VERSION 3.9.3
 RUN wget https://downloads.apache.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz
 RUN tar -xvzf apache-maven-$MAVEN_VERSION-bin.tar.gz
 COPY ./mvn-build /root/bin/mvn-build
